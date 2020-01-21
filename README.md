@@ -34,11 +34,13 @@ The tweets were processed according to the following and in the same order.
 **Distribution of sentiments**
 
 As can be seen below, both sentiments are somewhat balanced
+
 ![alt_text](images/0.png "image_tooltip")
 
 **Distribution of lengths of tweets**
 
 We can also see below that the lengths of both the sentiments follow the same distribution.
+
 ![alt_text](images/1.png "image_tooltip")
 
 
