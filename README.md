@@ -34,29 +34,31 @@ The tweets were processed according to the following and in the same order.
 **Distribution of sentiments**
 
 As can be seen below, both sentiments are somewhat balanced
+![alt_text](images/0.png "image_tooltip")
 
 **Distribution of lengths of tweets**
 
 We can also see below that the lengths of both the sentiments follow the same distribution.
+![alt_text](images/1.png "image_tooltip")
 
-![alt_text](images/0.png "image_tooltip")
 
 
 **Word Clouds and Word frequency plots**
 
 _<span style="text-decoration:underline;">Positive Sentiments</span>_
 
-![alt_text](images/1.png "image_tooltip")
 
 ![alt_text](images/2.png "image_tooltip")
+![alt_text](images/3.png "image_tooltip")
+
 
 We can see that for the positive sentiment words like lol,thank, love, good show up more frequently.
 
 _<span style="text-decoration:underline;">Negative Sentiments</span>_
 
-![alt_text](images/3.png "image_tooltip")
 
 ![alt_text](images/4.png "image_tooltip")
+![alt_text](images/5.png "image_tooltip")
 
 
 For the negative sentiment words like miss, work, sad, wish are more frequent.
@@ -137,25 +139,11 @@ _NaiveBayes model for Word2Vec was NOT trained because word vectors can take neg
 The following table shows the results of all the models and methods. The best performing method-model row is highlighted
 
 
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/5.png "image_tooltip")
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment4.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
 ![alt_text](images/6.png "image_tooltip")
 
-
-
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment5.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
 ![alt_text](images/7.png "image_tooltip")
+
+![alt_text](images/8.png "image_tooltip")
 
 
 We can see from the results that the all the metrics are higher for **Logistic Regression with TF-IDF**.
@@ -165,31 +153,18 @@ We can also notice that the Decision tree models were overfit for all methods wh
 The following are the ROC and the class-wise metrics for the best performing (Logistic Regression - TFIDF) model
 
 
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment6.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/8.png "image_tooltip")
-
-
-
-
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment7.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
 ![alt_text](images/9.png "image_tooltip")
+
+
+
+![alt_text](images/10.png "image_tooltip")
 
 
 **Error Analysis**
 
 We have seen the Logistic Regression with TF-IDF performs the best. The following is a sample of misclassifications.
 
-
-
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment8.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/10.png "image_tooltip")
+![alt_text](images/11.png "image_tooltip")
 
 
 _<span style="text-decoration:underline;">Observations:</span>_
