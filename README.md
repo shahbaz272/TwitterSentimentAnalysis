@@ -1,2 +1,214 @@
 # TwitterSentimentAnalysis
  
+**Problem**
+
+The aim of this project is to extract the sentiment of tweets and classifying it as either a positive or a negative sentiment. A solution to this problem is important to a wide variety of domains
+
+**Dataset**
+
+The data that I will be using is of 100,000 tweets each marked with either a positive or a negative tweet. The dataset can be easily downloaded from [here](https://datahack.analyticsvidhya.com/contest/practice-problem-twitter-sentiment-analysis/). 
+
+The dataset is available as a csv file and has essentially 2 columns of interest.
+
+1. Sentiment - 0,1 (Negative,Positive)
+2. Tweet - The text associated with the sentiment
+
+**Data Preprocessing**
+
+The tweets were processed according to the following and in the same order.
+
+1. Tags removal (i.e ‘@’)
+2. Lowercasing
+3. Numbers removal
+4. HTTP links removal
+5. Emojis were processed. Emojis were labelled EMO_POS or EMO_NEG 
+6. Punctuation removal
+7. Removed extra white spaces
+8. Words which did not consist of alphabets were removed
+9. Stop words were removed (These words add no value to the sentiment of the tweet e.g The, He etc)
+10. Character repetitions were removed e.g _funnny _was changed to _funny_
+11. Words were lemmatized to bring to their basic form e.g adventurous changed to adventure
+
+**Exploratory Data Analysis**
+
+**Distribution of sentiments**
+
+As can be seen below, both sentiments are somewhat balanced
+
+**Distribution of lengths of tweets**
+
+We can also see below that the lengths of both the sentiments follow the same distribution.
+
+![alt_text](images/0.png "image_tooltip")
+
+
+**Word Clouds and Word frequency plots**
+
+_<span style="text-decoration:underline;">Positive Sentiments</span>_
+
+![alt_text](images/1.png "image_tooltip")
+
+![alt_text](images/2.png "image_tooltip")
+
+We can see that for the positive sentiment words like lol,thank, love, good show up more frequently.
+
+_<span style="text-decoration:underline;">Negative Sentiments</span>_
+
+![alt_text](images/3.png "image_tooltip")
+
+![alt_text](images/4.png "image_tooltip")
+
+
+For the negative sentiment words like miss, work, sad, wish are more frequent.
+
+**Modeling strategy**
+
+I have approached the sentiment extraction through 3 methods.
+
+
+
+1. Bag of Words  - Each processed tweet is considered a set of words. (Used the 3000 most frequent words)
+2. Term Frequency Inverse Document Frequency - **TF-IDF** is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. Here each word is assigned a weight that reflects how frequent it is in that tweet in comparison to all the tweets. (Used 3000 most frequent words)
+3. Word Embeddings - This technique converts the words into mathematical vectors based how their similarity to other words. (1000 word embeddings were used. The vectors were rounded to 3 decimal places to reduce the training time of the models)
+
+For each method 5 machine learning approaches are used 
+
+
+
+1. Logistic Regression
+2. SVM
+3. XGBoost
+4. NaiveBayes
+5. Decision Tree
+
+The dataset is used as per the following scheme for each method - model iteration
+
+
+<table>
+  <tr>
+   <td>
+   </td>
+   <td>All data
+   </td>
+   <td>Training data
+   </td>
+   <td>Cross Validation data
+   </td>
+   <td>Test data
+   </td>
+  </tr>
+  <tr>
+   <td>Percentage
+   </td>
+   <td>100%
+   </td>
+   <td>72%
+   </td>
+   <td>8%
+   </td>
+   <td>20%
+   </td>
+  </tr>
+  <tr>
+   <td>Tweets
+   </td>
+   <td>100,000
+   </td>
+   <td>72,000
+   </td>
+   <td>8,000
+   </td>
+   <td>20,000
+   </td>
+  </tr>
+</table>
+
+
+All the models are optimized for accuracy. Each models own subset of hyperparameters are tuned using the cross-validation data. They were cross validated using a shuffled 3-fold split.
+
+The code has been set up so that each iteration receives the same data training and validation data and is entirely reproducible.
+
+**_<span style="text-decoration:underline;">Note:</span>_**
+
+_NaiveBayes model for Word2Vec was NOT trained because word vectors can take negative values and NaiveBayes does not handle them. One work around could be to apply MinMax scaling to the Word embeddings but that would void the homogeneity of the validation process._
+
+**Results**
+
+The following table shows the results of all the models and methods. The best performing method-model row is highlighted
+
+
+
+<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/5.png "image_tooltip")
+
+
+<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment4.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/6.png "image_tooltip")
+
+
+
+
+<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment5.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/7.png "image_tooltip")
+
+
+We can see from the results that the all the metrics are higher for **Logistic Regression with TF-IDF**.
+
+We can also notice that the Decision tree models were overfit for all methods while the rest were fine.
+
+The following are the ROC and the class-wise metrics for the best performing (Logistic Regression - TFIDF) model
+
+
+
+<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment6.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/8.png "image_tooltip")
+
+
+
+
+<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment7.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/9.png "image_tooltip")
+
+
+**Error Analysis**
+
+We have seen the Logistic Regression with TF-IDF performs the best. The following is a sample of misclassifications.
+
+
+
+<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/Twitter-Sentiment8.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/10.png "image_tooltip")
+
+
+_<span style="text-decoration:underline;">Observations:</span>_
+
+
+
+1. We can see that some tweets cannot be classified as either positive or negative. They don't have a sentiment in them. For example tweet 0 is neither positive or negative. However the truth value associated with it is positive. It should be classified as Neutral. More examples are 1,9
+2. Some tweets have both a positive and a negative sentiment e.g _‘i wanted to win but it's allll good lol’_. They can not be labelled either positive or negative in entirety. 
+3. Wrong labeling in the Training data e.g. 8. This should have been a negative sentiment.
+
+Other than the observations highlighted further improvement can be made by tuning the model further or trying a more sophisticated technique.
+
+**Further improvements**
+
+
+
+1. Use more features to train the models for TFIDF.
+2. Use a sophisticated model like deep learning where the models are trained with the context of a window of words.
+3. BOW and TFIDF can be used with 2-grams or 3-grams
+4. Training dataset can be refined to be more accurate.
+5. Exclamation marks could be handled specially during the preprocessing of the tweets.
+
