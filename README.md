@@ -157,11 +157,16 @@ The following are the ROC and the class-wise metrics for the best performing (SV
 
 _Test Accuracy : 72.20%_
 
-![alt_text](images/9.png "image_tooltip")
+_Confusion Matrix_
 
+![alt_text](images/12.png "image_tooltip")
 
+We can see that 16% of the error is because of  False Negatives while 9.6% is due to False Positives. We can observe the same in the classification report below as well. The lower f1-score for Negative sentiments indicates that it is relatively harder to predict a negative sentiment correctly.
 
 ![alt_text](images/10.png "image_tooltip")
+
+
+![alt_text](images/9.png "image_tooltip")
 
 
 **Error Analysis**
