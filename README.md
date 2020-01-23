@@ -67,7 +67,7 @@ For the negative sentiment words like miss, work, sad, wish are more frequent.
 
 **Modeling strategy**
 
-I have approached the sentiment extraction through 3 methods.
+I have approached the sentiment extraction through 3 feature extraction methods.
 
 
 
@@ -75,7 +75,7 @@ I have approached the sentiment extraction through 3 methods.
 2. Term Frequency Inverse Document Frequency - **TF-IDF** is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. Here each word is assigned a weight that reflects how frequent it is in that tweet in comparison to all the tweets. (Used 3000 most frequent words)
 3. Word Embeddings - This technique converts the words into mathematical vectors based how their similarity to other words. (1000 word embeddings were used. The vectors were rounded to 3 decimal places to reduce the training time of the models)
 
-For each method 5 machine learning approaches are used 
+For each feature extraction method 6 machine learning approaches are used 
 
 
 
@@ -84,6 +84,7 @@ For each method 5 machine learning approaches are used
 3. XGBoost
 4. NaiveBayes
 5. Decision Tree
+6. Random Forest
 
 The dataset is used as per the following scheme for each method - model iteration
 
@@ -148,11 +149,11 @@ The following table shows the results of all the models and methods. The best pe
 ![alt_text](images/8.png "image_tooltip")
 
 
-We can see from the results that the all the metrics are higher for **Logistic Regression with TF-IDF**.
+We can see from the results that the all the metrics are higher for **SVM Classifier with TF-IDF**.
 
-We can also notice that the Decision tree models were overfit for all methods while the rest were fine.
+We can also notice that the Decision tree models were overfit and the Word Embeddings feature performed poorly.
 
-The following are the ROC and the class-wise metrics for the best performing (Logistic Regression - TFIDF) model
+The following are the ROC and the class-wise metrics for the best performing (SVM - TFIDF) model
 
 
 ![alt_text](images/9.png "image_tooltip")
@@ -164,7 +165,7 @@ The following are the ROC and the class-wise metrics for the best performing (Lo
 
 **Error Analysis**
 
-We have seen the Logistic Regression with TF-IDF performs the best. The following is a sample of misclassifications.
+We have seen the SVM with TF-IDF performs the best. The following is a sample of misclassifications.
 
 ![alt_text](images/11.png "image_tooltip")
 
