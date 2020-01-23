@@ -155,6 +155,7 @@ We can also notice that the Decision tree models were overfit and the Word Embed
 
 The following are the ROC and the class-wise metrics for the best performing (SVM - TFIDF) model
 
+_Test Accuracy : 72.20%_
 
 ![alt_text](images/9.png "image_tooltip")
 
