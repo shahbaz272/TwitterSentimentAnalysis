@@ -146,8 +146,6 @@ The following table shows the results of all the models and methods. The best pe
 
 ![alt_text](images/7.png "image_tooltip")
 
-![alt_text](images/8.png "image_tooltip")
-
 
 We can see from the results that the all the metrics are higher for **SVM Classifier with TF-IDF**.
 
@@ -157,7 +155,7 @@ The following are the ROC and the class-wise metrics for the best performing (SV
 
 _Test Accuracy : 72.20%_
 
-_Confusion Matrix_
+**Confusion Matrix**
 
 ![alt_text](images/12.png "image_tooltip")
 
